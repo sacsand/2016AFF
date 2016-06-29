@@ -1,0 +1,63 @@
+var express = require('express');
+var router = express.Router();
+
+
+module.exports = {
+    /*  function isEmpty(obj) {
+        // Speed up calls to hasOwnProperty
+          var hasOwnProperty = Object.prototype.hasOwnProperty;
+          // null and undefined are "empty"
+          if (obj == null) return true;
+
+          // Assume if it has a length property with a non-zero value
+          // that that property is correct.
+          if (obj.length > 0)    return false;
+          if (obj.length === 0)  return true;
+
+          // Otherwise, does it have any properties of its own?
+          // Note that this doesn't handle
+          // toString and valueOf enumeration bugs in IE < 9
+          for (var key in obj) {
+              if (hasOwnProperty.call(obj, key)) return false;
+          }
+
+          return true;
+        } */
+
+    isRequired: function(req, res, next) {
+
+        //  var record = req.param('tag');
+        var name = req.param.name;
+        //  var ingredients = req.param.ingredients;
+
+        res.SendResponse = function(obj) {
+            console.log('validate Middleware Started');
+            if (!name) { //if no tag
+                console.log('respond with json');
+                res.json(obj);
+            } else {
+
+                if (input_tag != 'csv') { //if tag is not equal to csv
+                    console.log('invalid tag type');
+                    res.json({
+                        status: 'failed,invalid tag type',
+                        message: 'provide a valid respond type',
+                        availableType: 'csv'
+                    });
+                } else if (input_tag == 'csv') {
+
+                    var json2csvCallback = function(err, csv) {
+                        if (err) throw err;
+                        res.send(csv);
+                    };
+                    converter.json2csv(obj, json2csvCallback);
+                } else if (input_tag = 'xml') {
+
+                    console.log('xml is here');
+                }
+            }
+
+        };
+        next();
+    }
+}
