@@ -15,34 +15,17 @@ var validator = require('node-validator');
 var checkRecipe=Validators.validateRecipe();
 
 
-
-
 /* GET /todos listing. */
 router.get('/', function(req, res, next) {
  var page = Number(req.param('page'));
  var limit = Number(req.param('limit'));
 
- //var tag = req.param('tag');
- //var no =2;
  Recipes.paginate({},{ page: page, limit: limit },function (err, todos) {
     if (err) return next(err);
     //var csv=todos;
   console.log(req.user);
     res.status(200).sendData(todos);
-
-  //res.set('Content-Type', 'text/csv');
-//res.send(csv);
- //res.set('Content-Type', 'text/xml');;
-
-    //res.set('Content-Type', 'text/xml');
-    //res.send(o2x(todos));
-  /*  res.json({
-  //    success: true,
-    //  message: 'Next Messsage',
-      todos: todos
-    });*/
   });
-
 });
 
 /* POST /recipes*/
@@ -79,7 +62,5 @@ router.delete('/:id', function(req, res, next) {
     res.json(post);
   });
 });
-
-
 
 module.exports = router;

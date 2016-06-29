@@ -7,10 +7,7 @@ var bodyParser = require('body-parser');
 var morgan      = require('morgan');
 
 
-var session = require('client-sessions');
-
 var routes = require('./routes/index');
-var todos = require('./routes/todos');
 var recipe = require('./routes/recipe');
 var user =require('./routes/user') ;
 var search =require('./routes/recipe_search');
@@ -56,7 +53,7 @@ app.use('/api', user);
 app.use(Converter.convert);//middlewarer for authnticate users
 app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
 app.use('/', routes);
-app.use('/api/todos', todos);
+
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
 app.use('/api/comments', comments);
