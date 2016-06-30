@@ -62,7 +62,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 });
 
 /* POST /users*/
-apiRoutes.post('/new',validator.express(checkUser), function(req, res, next) {
+apiRoutes.post('/users',validator.express(checkUser), function(req, res, next) {
   User.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);

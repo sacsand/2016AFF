@@ -29,7 +29,7 @@ router.put('/:id',validator.express(checkIngredients),function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   Recipes.findById(req.params.id,'ingredients' ,function (err, post) {
     if (err) return next(err);
-    res.json(post);
+    res.status(200).sendData(post);
   });
 });
 

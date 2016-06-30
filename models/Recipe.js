@@ -20,6 +20,11 @@ var RecipeSchema = new mongoose.Schema({
           coment:String,
           created_at:{type: Date, default: Date.now},
   }],
+  shopinglist:[{
+          item:String,
+          amount:Number,
+          unit:String,
+  }],
   note: String,
   published_by:{
     type: String,

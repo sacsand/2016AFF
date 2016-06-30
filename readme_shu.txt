@@ -8,4 +8,12 @@ SHU ID: b5048892
 >since i have used jwt authentication ,token must provided for every request.except api/,,
 >json and csv converting available , use tag = csv, default respond type is json
 
+>additional model
+mongoose
+json to csv convert
+mocha unit testing
+jwt authentication
+comments
+notes
+
 >available at git https://github.com/sacsand/2016AFF

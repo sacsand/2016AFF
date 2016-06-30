@@ -49,7 +49,7 @@ app.use(morgan('dev'));
 app.use('/', routes);
 app.use('/api', user);
 app.use(Converter.convert);//middlewarer for authnticate users
-//app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
+app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
 app.use('/api/comments', comments);

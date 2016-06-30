@@ -6,7 +6,6 @@ var Recipes = require('../models/Recipe.js');
 var Authenticate   = require('../middleware/authenticate');
 var Validators   = require('../middleware/validation');
 var async = require('async');
-var o2x = require('object-to-xml');
 var converter = require('json-2-csv');
 
 var validator = require('node-validator');

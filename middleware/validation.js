@@ -12,10 +12,17 @@ module.exports = {
         .withRequired('name', validator.isString())
         .withRequired('unit', validator.isString());
 
+      var checkShopinglist = validator.isObject()
+        .withRequired('amount', validator.isNumber())
+        .withRequired('item', validator.isString())
+        .withRequired('unit', validator.isString());
+
+
       var checkRecipe = validator.isObject()
         .withRequired('name', validator.isString())
         .withRequired('description', validator.isString())
         .withRequired('ingredients',validator.isArray(checkIngrediens))
+        .withRequired('shopinglist',validator.isArray(checkShopinglist))
         .withRequired('tags',validator.isArray())
         .withRequired('published_by',validator.isString())
         .withRequired('note',validator.isString());
