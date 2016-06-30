@@ -15,7 +15,7 @@ router.get('/byname/:name', function(req, res, next) {
     });
 });
 
-router.get('/byingradients/:ingd', function(req, res, next) {
+router.get('/byingredients/:ingd', function(req, res, next) {
     var q = req.param('ingd');
     Recipes.find(({'ingredients.name': {'$regex': q }}), function(err, result) {
         if (err) return next(err);

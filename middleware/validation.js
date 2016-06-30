@@ -48,6 +48,17 @@ module.exports = {
         .withRequired('ingredients',validator.isArray(checkInside));
 
       return checkIngrad;
+  },
+
+  validateUser: function(){
+
+      var checkUser = validator.isObject()
+        .withRequired('name', validator.isString())
+        .withRequired('password', validator.isString())
+        .withOptional('admin', validator.isString());
+
+
+      return checkUser;
   }
 
 

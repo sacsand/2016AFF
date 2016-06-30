@@ -6,6 +6,12 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config'); // get our config file
 var User   = require('../models/user'); // get our mongoose model
 var Authenticate   = require('../middleware/authenticate'); // get our mongoose model
+var Validators   = require('../middleware/validation');
+var validator = require('node-validator');
+
+//validation for the create recipe
+var checkUser=Validators.validateUser();
+
 
 var app = express();
 // get an instance of the router for api routes
@@ -56,7 +62,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 });
 
 /* POST /users*/
-apiRoutes.post('/new', function(req, res, next) {
+apiRoutes.post('/new',validator.express(checkUser), function(req, res, next) {
   User.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);

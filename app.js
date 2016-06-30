@@ -12,7 +12,7 @@ var recipe = require('./routes/recipe');
 var user =require('./routes/user') ;
 var search =require('./routes/recipe_search');
 var comments =require('./routes/comment');
-var ingradients =require('./routes/ingradients');
+var ingredients =require('./routes/ingredients');
 
 //var converter = require('json-2-csv');
 
@@ -48,16 +48,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 
-
+app.use('/', routes);
 app.use('/api', user);
 app.use(Converter.convert);//middlewarer for authnticate users
 app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
-app.use('/', routes);
-
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
 app.use('/api/comments', comments);
-app.use('/api/ingredients', ingradients);
+app.use('/api/ingredients', ingredients);
 
 
 app.get('/setup', function(req, res) {

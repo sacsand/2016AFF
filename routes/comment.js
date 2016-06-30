@@ -6,12 +6,12 @@ var Recipes = require('../models/Recipe.js');
 var Authenticate   = require('../middleware/authenticate');
 var Validators   = require('../middleware/validation');
 var async = require('async');
-var o2x = require('object-to-xml');
-var converter = require('json-2-csv');
 var validator = require('node-validator');
 
-//validation for the adding(update) coment
+//validation for the adding(update) comment
 var checkComment=Validators.validateComment();
+var ObjectId = require('mongoose').Types.ObjectId;
+
 
 
 //add comment ;id=recipe id
@@ -28,25 +28,14 @@ router.put('/push/:id',validator.express(checkComment),function(req, res, next) 
     res.json(post);
   });
 });
-/*
-//add comment ;id=recipe id
-router.put('/push/:id',validator.express(checkComment),function(req, res, next) {
-  Recipes.findByIdAndUpdate(req.params.id,
-    {$push : {comments:req.body.comments}},
-    {safe: true, upsert:true},
-    function (err, post) {
-    if (err) return next(err);
-    res.json(post);
-  });
-});
-*/
 
-//delete coment by coment id ;id=comment id
-router.put('/pull/:id',function(req, res, next) {
+
+//delete comment ;id=recipe id     cid:coment id
+router.put('/pull/:id/:cid',function(req, res, next) {
   Recipes.update(
-    {},
-    {$pull : {comments:{_id:req.params.id}}},
-    {safe: true, upsert:true},
+    {_id:req.params.id},
+    {$pull : {comments:{_id:req.params.cid}}},
+    {safe: true},
     function (err, post) {
     if (err) return next(err);
     res.json(post);
