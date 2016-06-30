@@ -31,5 +31,4 @@ Recipes.find({ 'ingredients.name': {$in: r_ingd } }, function(err, result) {
     });
 });
 
-
 module.exports = router;

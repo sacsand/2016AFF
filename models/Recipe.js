@@ -16,15 +16,14 @@ var RecipeSchema = new mongoose.Schema({
   }],
   tags:Array,
   comments:[{
-          user:Number,
+          user:String,
           coment:String,
           created_at:{type: Date, default: Date.now},
   }],
   note: String,
   published_by:{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
+    type: String,
+    },
   publiished_at:{ type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });

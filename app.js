@@ -14,11 +14,9 @@ var search =require('./routes/recipe_search');
 var comments =require('./routes/comment');
 var ingredients =require('./routes/ingredients');
 
-//var converter = require('json-2-csv');
 
-//var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
-//var User   = require('./models/user'); // get our mongoose model
+
 var Authenticate   = require('./middleware/authenticate'); // get our mongoose model
 var Converter   = require('./middleware/converter'); // get our mongoose model
 
@@ -51,7 +49,7 @@ app.use(morgan('dev'));
 app.use('/', routes);
 app.use('/api', user);
 app.use(Converter.convert);//middlewarer for authnticate users
-app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
+//app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
 app.use('/api/comments', comments);

@@ -17,6 +17,7 @@ module.exports = {
         .withRequired('description', validator.isString())
         .withRequired('ingredients',validator.isArray(checkIngrediens))
         .withRequired('tags',validator.isArray())
+        .withRequired('published_by',validator.isString())
         .withRequired('note',validator.isString());
 
         return checkRecipe;
@@ -27,7 +28,7 @@ module.exports = {
 
       var checkInside = validator.isObject()
         .withRequired('coment', validator.isString())
-        .withRequired('user', validator.isNumber());
+        .withRequired('user', validator.isString());
 
 
       var checkComment = validator.isObject()
