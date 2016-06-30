@@ -39,7 +39,7 @@ module.exports = {
   validateIngredients: function(){
 
       var checkInside = validator.isObject()
-        .withRequired('amt', validator.isNumber())
+        .withRequired('amt', validator.isNumber({min:0, max:10000}))
         .withRequired('name', validator.isString())
         .withRequired('unit', validator.isString());
 
